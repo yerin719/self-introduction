@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script>
+            var num1=0;
+            var num1=0;
+            var score = 0;
+            var submitNum =0;
+            function res(){
+                num1 = parseInt((Math.random()*9)+1);
+                num2 = parseInt((Math.random()*9)+1);
+                score =0;
+                submitNum =0;
+                document.getElementById("question").innerHTML=`${num1} X ${num2} =`;
+                document.getElementById("inputText").value=("");
+                document.getElementById("scoreShow").value=("Score : "+score);
+            }
+            function check(){
+                submitNum = document.getElementById('inputText').value;
+                if(submitNum==""){
+                    document.getElementById("result").innerHTML=("Please enter the number");
+                }
+                else if(submitNum==num1*num2){
+                    document.getElementById("result").innerHTML=("올~");
+                    score=score+1;
+                    document.getElementById("scoreShow").innerHTML=("Score : "+score);
+                    num1 = parseInt((Math.random()*9)+1);
+                    num2 = parseInt((Math.random()*9)+1);
+                    document.getElementById("question").innerHTML=(num1+"X"+num2+"=");
+                }
+                else{
+                    document.getElementById("result").innerHTML=("분발하세요");
+                }
+                document.getElementById("inputText").value=("");
+
+            }
+            function enterkey() {
+                if (window.event.keyCode == 13) {
+                check();
+                }
+            }
+
+        </script>
+        <style>
+            div{color: black; size: 15;}
+            body{text-align: center;}
+            img , #inputText{width: 300px;}
+            #inputText{text-align: center;}
+        </style>
+    </head>
+
+    <body>
+        
+        <h1>GUGUDAN GAME</h1>
+        <img src="gugudan.png">
+        <div id = question></div>
+        <div><input onkeyup="enterkey();" type="text" id="inputText" placeholder=" Please enter a number"></div>
+        <input type="button" id="inputButton" value="submit" onclick="check()">
+        <input type="button" id="resButton" value="restart" onclick="res()">
+        <div id="result"></div>
+        <div id="scoreShow"></div>
+        <script>res();</script>
+
+    </body>
+</html>
